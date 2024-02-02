@@ -7,7 +7,7 @@ video_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\code\\videos\\test.mp
 video_path_out = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\code\\videos\\test_out.mp4'
 
 # Load the model
-model_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\runs\\detect\\train2\\weights\\best.pt'
+model_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\runs\\detect\\train3\\weights\\last.pt'
 model = YOLO(model_path)  # load a custom model
 
 # Set the threshold for detection
