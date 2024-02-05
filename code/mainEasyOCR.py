@@ -3,7 +3,7 @@ import easyocr
 import matplotlib.pyplot as plt
 
 # read image
-image_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\code\\photo_5899881456963012149_y.jpg'
+image_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\code\\photo_5899881456963012143_y.jpg'
 
 img = cv2.imread(image_path)
 
@@ -21,14 +21,14 @@ with open('detected_texts.txt', 'w') as f:
 
         # Draw bounding box and text on the image for visualization
         cv2.rectangle(img, (int(bbox[0][0]), int(bbox[0][1])), (int(bbox[2][0]), int(bbox[2][1])), (0, 255, 0), 2)
-        cv2.putText(img, text, (int(bbox[0][0]), int(bbox[0][1] - 10)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+      #  cv2.putText(img, text, (int(bbox[0][0]), int(bbox[0][1] - 10)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
 # Display the image
 plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.show()
 
 # Keywords to look for, not necessarily in order
-keywords = ["PORTOBELLO", "MUSHROOMS", "Origin", "NIRELAND"]
+keywords = ["PORTOBELLO", "MUSHROOMS", "Origin", "N.IRELAND", "200g"]
 found_keywords = {keyword: False for keyword in keywords}
 
 # Now, read the content of the file to search for each keyword
@@ -40,8 +40,15 @@ with open('detected_texts.txt', 'r') as f:
         if keyword.upper() in content:  # Check each keyword in upper case
             found_keywords[keyword] = True
 
-# Check if all keywords were found
-if all(found_keywords.values()):
+# Check if all keywords were found and print which ones are missing
+all_found = True
+missing_keywords = []
+for keyword, found in found_keywords.items():
+    if not found:
+        all_found = False
+        missing_keywords.append(keyword)
+
+if all_found:
     print("Correct label")
 else:
-    print("Wrong label")
+    print("Wrong label. Missing:", ", ".join(missing_keywords))
