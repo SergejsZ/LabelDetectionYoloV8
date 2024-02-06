@@ -3,7 +3,7 @@ import easyocr
 import matplotlib.pyplot as plt
 
 # read image
-image_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\code\\photo_5899881456963012143_y.jpg'
+image_path = 'C:\\Users\\serge\\FinalYear\\LabelDetection\\code\\incorrect.jpg'
 
 img = cv2.imread(image_path)
 
@@ -28,7 +28,7 @@ plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.show()
 
 # Keywords to look for, not necessarily in order
-keywords = ["PORTOBELLO", "MUSHROOMS", "Origin", "N.IRELAND", "200g"]
+keywords = ["BABY", "MUSHROOMS", "Origin", "NIRELAND", "200g"]
 found_keywords = {keyword: False for keyword in keywords}
 
 # Now, read the content of the file to search for each keyword
